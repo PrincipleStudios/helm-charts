@@ -1,0 +1,30 @@
+name: publish static-files-server
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  IMAGE_NAME: static-files-server
+
+  registryLoginServer: 'principlestudios.azurecr.io'
+  imageName: 'dotnet-static-files-server'
+
+jobs:
+  build:
+    runs-on: 'ubuntu-latest'
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: 'Log in to docker registry'
+      uses: azure/docker-login@v1
+      with:
+        login-server: ${{ env.registryLoginServer }}
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+
+    - name: 'Build and push image'
+      run: |
+        docker build . -t $registryLoginServer/$imageName:pr-${{ github.sha }} --build-arg PR_ID=${{ github.event.pull_request.number }}
+        docker push $registryLoginServer/$imageName:pr-${{ github.sha }}

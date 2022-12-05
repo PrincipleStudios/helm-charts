@@ -10,11 +10,11 @@ WORKDIR /src
 COPY ["./PrincipleStudios.StaticFileServer.csproj", "./"]
 RUN dotnet restore
 
-# COPY ./schemas/ ./schemas/
 COPY ./ ./
 # COPY ./Directory.Build.props .
 # RUN dotnet build -p:SkipUiBuild=true
 # RUN dotnet test --no-build
+
 RUN dotnet build "PrincipleStudios.StaticFileServer.csproj" -c Release -o /app/build
 
 FROM build-dotnet AS publish-dotnet
