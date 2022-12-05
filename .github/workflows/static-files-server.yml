@@ -1,4 +1,4 @@
-name: publish static-files-server
+name: publish static-files-server to Azure
 
 on:
   push:
