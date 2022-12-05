@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Host.ConfigureAppConfiguration((context, config) => {
     foreach (var s in config.Sources.OfType<FileConfigurationSource>())
     {
-        // s.ReloadOnChange = false;
+        s.ReloadOnChange = false;
     }
 });
 #pragma warning restore ASP0013

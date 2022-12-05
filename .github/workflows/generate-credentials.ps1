@@ -8,11 +8,13 @@ param (
     $appName = 'PrincipleHelmCharts-GitHub-Actions'
 )
 
+az account set --subscription $subscription
+
 $details = az ad sp create-for-rbac --name "$appName" `
     --skip-assignment `
     --sdk-auth --only-show-errors | ConvertFrom-Json
 
-$objectId = az ad sp show --id 976a9a3f-8417-472f-ae53-0092ebb8c411 --query objectId -o tsv --only-show-errors
+$objectId = az ad sp show --id $($details.clientSecret) --query objectId -o tsv --only-show-errors
 
 $dump = az role assignment create `
     --role AcrPush `

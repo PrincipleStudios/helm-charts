@@ -27,5 +27,5 @@ jobs:
     - name: 'Build and push image'
       working-directory: images/PrincipleStudios.StaticFileServer
       run: |
-        docker build . -t $registryLoginServer/$imageName:pr-${{ github.sha }} --build-arg PR_ID=${{ github.event.pull_request.number }}
-        docker push $registryLoginServer/$imageName:pr-${{ github.sha }}
+        docker build . -t $registryLoginServer/$imageName:latest
+        docker push $registryLoginServer/$imageName:latest
