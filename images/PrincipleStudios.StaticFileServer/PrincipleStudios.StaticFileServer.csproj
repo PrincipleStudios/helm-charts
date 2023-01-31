@@ -6,4 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="CompressedStaticFiles" Version="2.1.0" />
+  </ItemGroup>
+
 </Project>
