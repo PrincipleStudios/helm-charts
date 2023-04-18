@@ -19,14 +19,14 @@ builder.Services.Configure<ForwardedHeadersOptions>(options =>
 builder.Services.AddCompressedStaticFiles();
 
 builder.Logging.ClearProviders();
-builder.Logging.AddJsonConsole(options => 
-{ 
+builder.Logging.AddJsonConsole(options =>
+{
     options.IncludeScopes = false;
     options.TimestampFormat = "yyyy:MM:dd hh:mm:ss ";
     options.JsonWriterOptions = new System.Text.Json.JsonWriterOptions
     {
         // sometimes useful to change this to true when testing locally.
-        // but it needs to be false for Fluent Bit to 
+        // but it needs to be false for Fluent Bit to
         // process log lines correctly
         Indented = false
     };
@@ -36,6 +36,7 @@ var app = builder.Build();
 
 app.UseHttpsRedirection();
 app.UseDefaultFiles();
+app.UseStatusCodePagesWithReExecute("/{0}.html");
 app.UseCompressedStaticFiles(new StaticFileOptions
 {
     OnPrepareResponse = ctx =>
