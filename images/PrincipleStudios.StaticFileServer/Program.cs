@@ -4,7 +4,8 @@ using Microsoft.AspNetCore.HttpOverrides;
 var builder = WebApplication.CreateBuilder(args);
 
 #pragma warning disable ASP0013 // suprress suggestion to use
-builder.Host.ConfigureAppConfiguration((context, config) => {
+builder.Host.ConfigureAppConfiguration((context, config) =>
+{
     foreach (var s in config.Sources.OfType<FileConfigurationSource>())
     {
         s.ReloadOnChange = false;
