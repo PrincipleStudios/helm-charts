@@ -40,14 +40,18 @@ spec:
             - name: http
               containerPort: 80
               protocol: TCP
+          {{- if empty .Values.containerspec.livenessProbe }}
           livenessProbe:
             httpGet:
               path: /
               port: http
+          {{- end }}
+          {{- if empty .Values.containerspec.readinessProbe }}
           readinessProbe:
             httpGet:
               path: /
               port: http
+          {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           {{- if .Values.containerspec }}
