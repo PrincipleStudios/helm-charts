@@ -3,6 +3,16 @@ entries:
   single-container:
   - apiVersion: v2
     appVersion: 1.0.0
+    created: "2024-03-28T20:25:19.033206755Z"
+    description: A chart to deploy a single container as a deployment with optional ingress
+    digest: cc40a39b97875ab15849db27a0157d120cd4693f6da52fdbf2d10e13ea6fea31
+    name: single-container
+    type: application
+    urls:
+    - https://github.com/PrincipleStudios/helm-charts/releases/download/single-container-0.2.0/single-container-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: 1.0.0
     created: "2022-04-01T17:12:00.42123821Z"
     description: A chart to deploy a single container as a deployment with optional ingress
     digest: 629980ef7653c0b883fe0bca4f2073ca379f90a5918518000734c024ee350e65
