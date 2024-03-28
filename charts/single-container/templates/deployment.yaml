@@ -24,6 +24,9 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      {{- if .Values.podspec }}
+      {{- toYaml .Values.podspec | nindent 6 }}
+      {{- end }}
       serviceAccountName: {{ include "single-container.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
@@ -47,8 +50,8 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          {{- if .Values.podspec }}
-          {{- toYaml .Values.podspec | nindent 10 }}
+          {{- if .Values.containerspec }}
+          {{- toYaml .Values.containerspec | nindent 10 }}
           {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:

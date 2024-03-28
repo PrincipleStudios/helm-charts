@@ -24,6 +24,9 @@ serviceAccount:
   name: ""
 
 podspec: {}
+# volumes: 
+
+containerspec: {}
 # env:
 #   - name: BlobStorage
 #       valueFrom:
